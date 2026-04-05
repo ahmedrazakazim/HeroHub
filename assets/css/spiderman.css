@@ -1,0 +1,689 @@
+body {
+    background-color: #121212;
+    margin: 0px;
+    color: white;
+    transition: 0.5s,color 0.5s;
+    height: 180vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    pointer-events: auto;
+    transition: pointer-events 0.3s ease;
+    transition: 0.5s;
+    overflow-x: hidden;
+    
+
+}
+
+.dark-mode{
+    background-color: rgba(240, 240, 240, 0.959);
+    color:#121212 ;
+}
+
+#header {
+    background-color: #121212;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-bottom: 3px solid rgb(75, 75, 75);
+    transition: 0.5s, color 0.5s;
+    z-index: 1;
+}
+#darkmode {
+    background-color: black;
+    color: white;
+    position: absolute;
+    right: 30px;
+    top: 40px;
+   
+    border-radius: 25px;
+    padding: 9px;
+    outline: none;
+    border: none;
+    transition: 0.5s;
+    animation-name: button-fade;
+    animation-duration: 0.5s;
+    -o-animation-timing-function: ease-in-out;
+    cursor: pointer;
+    z-index: 1;
+}
+#darkmode:hover  {
+    transform: translateY(-10px);
+    box-shadow: 0 0px 20px rgba(255, 255, 255, 0.863);
+    background-color: white;
+    color: black;
+    fill: white;
+    
+      
+    
+
+}
+#darkmode:hover.dark-mode  {
+    transform: translateY(-10px);
+    box-shadow: 0 0px 20px rgba(0, 0, 0, 0.863);
+    background-color: rgb(0, 0, 0);
+    color: black;
+    fill: rgb(0, 0, 0);
+    
+      
+    
+
+}
+body.dark-mode {
+    background-color: #ffffff ;
+    color: #000000;
+  }
+  body.dark-mode #header {
+    background-color: #ffffff;
+  }
+#darkmode.dark-mode{
+    background-color: rgb(173, 173, 173);
+    color: black;
+    fill: rgb(0, 0, 0);
+}
+
+  
+
+  
+#darkmode svg:first-child{
+    display: none;
+}
+#darkmode.dark-mode svg:first-child{
+    display: block;
+}
+#darkmode.dark-mode svg:last-child{
+    display: none;
+}
+
+
+
+@keyframes fade-in{
+    0%{
+        opacity: 0;
+        transform: translatex(-250px);
+    }
+    
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes fade-in-box{
+    0%{
+        opacity: 0;
+        transform: translatex(-250px);
+    }
+   
+    100%{
+        opacity: 1;
+    }
+    
+}
+@keyframes button-fade {
+    0%{
+        opacity: 0;
+        transform: translateX(250px);
+    }
+}
+#darkmode svg{
+    height: 50px;
+    width: 50px;
+    fill: white;
+    transition: 0.3s;
+}
+#darkmode:hover svg{
+    fill: black;
+}
+#darkmode.dark-mode svg{
+    height: 50px;
+    width: 50px;
+    fill: rgb(0, 0, 0);
+    transition: 0.3s;
+}
+#darkmode:hover.dark-mode svg{
+    fill: rgb(255, 255, 255);
+}
+
+
+footer {
+  position: relative;
+  bottom: -525px;
+  width: 100%;
+  background-color: grey;
+  padding-bottom: 50px;
+  
+
+}
+#footer{
+    margin-top: 0px;
+    color: white;
+    font-family: "Tilt Neon", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  position: relative;
+  left: 0; text-align: center;
+  top: 20px;
+}
+body.dark-mode footer {
+    background-color: #000000;
+    color: #333;
+  }
+  [id^="profile"]:hover {
+    box-shadow: 0 0px 20px rgb(255, 255, 255);
+
+  }
+#overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(0, 0, 0);
+        z-index: 1000;
+        transform: translateX(0%); 
+        transition: transform 0.5s;
+        animation-name: moveout;
+        animation-duration: 0.5s;
+        animation-delay: 1.5s;
+        animation-fill-mode: forwards;
+}
+#overlay img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px; 
+    height: 300px; 
+    object-fit: cover;
+    filter: brightness(100) contrast(100) invert(1) drop-shadow(0 0 25px white);
+}
+@keyframes moveout {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+    
+}
+#container {
+    position: relative;
+    width: 100%;
+    height: 900px;
+    flex-grow: 1;
+    width: auto;
+  }
+
+  #banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 2000px;
+    background-color: #121212;
+    border-right: 5px solid rgb(75, 75, 75);
+    overflow: hidden;
+  } 
+body.dark-mode #banner{
+    background-color: #ffffff;
+    width: 300px;
+    height: 2000px;
+    margin-bottom: 0px;
+    border-right: 5px solid  rgb(75, 75, 75);
+    display: inline-block;
+}#banner video {
+    width: 300px;
+    height: 100%;
+    object-fit: cover;
+    float: left;
+    display: inline-block;
+    float: left;
+    
+  }
+  body.dark-mode #banner video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    float: left;
+    display: inline-block;
+    float: left;
+  }
+  #headings {
+    display: flex !important;
+    justify-content: space-around !important;
+    width: calc(100% - 310px) !important;
+    padding: 0 10% !important;
+    box-sizing: border-box !important;
+    left: 0 !important;
+    position: absolute !important;
+    margin-left: 310px !important;
+    align-items: center;
+}
+  #numbers {
+    display: flex !important;
+    justify-content: space-around !important;
+    width: calc(100% - 310px) !important;
+    padding: 0 10% !important;
+    box-sizing: border-box !important;
+    left: 0 !important;
+    position: absolute !important;
+    margin-left: 310px !important;
+    align-items: center;
+}
+  #headings #post {
+    transform: translatex(-20px);
+  }
+  #headings #SUPPORTERS {
+    transform: translatex(40px);
+  }
+  #headings #supporting {
+    transform: translatex(55px);
+  }
+  #grid {
+    position: absolute;
+    top: 771px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 0; 
+    padding: 0; 
+    margin: 0; 
+    width: 1600px;
+    margin-left: 306px;
+    margin-bottom: 0px;
+    padding: 0px;
+    bottom: 200px;
+}
+
+[id^=pis]  {
+    background-color: lightgray;
+    color: black;
+    padding: 10px;
+    border: 3px solid rgb(75, 75, 75);
+    z-index: 10;
+    width: 100%; 
+    position: relative;
+    margin: 0; 
+    top: 0; 
+    height: 600px; 
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0px;
+    cursor: pointer;
+}
+[id^=pis] .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0; 
+    background-image: linear-gradient(to top, rgba(75, 75, 75, 0.7), rgba(0, 0, 0, 0));/* Aqua color with some transparency */
+    transition: height 0.5s ease; 
+    z-index: 1; 
+    pointer-events: none;
+}
+
+
+[id^=pis] img {
+    object-fit: cover; 
+    width: 100%; 
+    height: 100%; 
+}
+[id^=pis]:hover .overlay{
+    height: 100%;
+    
+  
+}
+#p1{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    filter: brightness(100);
+
+}
+#play {
+position: static;
+width: 150px;
+height: 150px;
+color: white;
+}
+
+.red-overlay {
+    position: fixed;
+    top: 50%;                 /* Center vertically */
+    left: 50%;                /* Center horizontally */
+    width: 75vw;              /* Keep the same size (example: 75% of the viewport width) */
+    height: 75vh;             /* Keep the same size (example: 75% of the viewport height) */
+    background-color: rgb(0, 0, 0);  /* Black background */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;    
+    transform: translate(-50%, -50%);  /* Proper centering */
+    animation-name: videoin;
+    animation-duration: 0.9s;
+    overflow: hidden;        /* Hide anything overflowing */
+}
+
+
+
+.red-overlay button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    background: transparent;
+    border: none;
+    padding: 10px;
+    font-size: 35px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+.red-overlay button:hover {
+    
+    box-shadow: 5px,5px,100px,rgb(255, 255, 255);
+}
+@keyframes videoin{
+    0%{
+          left: 100vw; /* Start at the center */
+        transform: translate(-50%, -50%); /* Keep it centered */
+    }
+    100%{
+        left: 50%; /* Start at the center */
+        transform: translate(-50%, -50%); /* Keep it centered */
+
+    }
+}    
+body.locked #container,body.locked #header,body.locked #headings,body.locked #numbers,body.locked #grid{
+    filter:  blur(10px);
+    pointer-events: none;
+    transition: 0.5s;
+
+}
+body.unlocked #container,body.unlocked #header,body.unlocked #headings,body.unlocked #numbers,body.unlocked #grid{
+    filter: blur(0px);
+    pointer-events: auto;
+    transition: 0.5s;
+    
+}
+.red-overlay video{
+    width: 1450px;              /* Make the video 90% of the container width */
+    height: 720px;  
+    object-fit: cover;
+}
+
+#views {
+position: static;
+font-size: 100px;
+color: white;
+font-family: "Oswald", sans-serif;
+}    
+#at {
+position: static;
+font-size: clamp(40px, 6vw, 100px);
+margin: 0;
+font-family: "Tilt Neon", sans-serif;
+}
+    
+
+
+
+/* FLUID UPGRADES REPLACING ABSOLUTE WIDTHS */
+#grid {
+    width: calc(100% - 310px) !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+}
+
+#headings {
+    display: flex !important;
+    justify-content: space-around !important;
+    width: calc(100% - 310px) !important;
+    padding: 0 10% !important;
+    box-sizing: border-box !important;
+    left: 0 !important;
+    position: absolute !important;
+    margin-left: 310px !important;
+    align-items: center;
+}
+
+#headings p {
+    width: 150px !important;
+    text-align: center !important;
+    margin: 0 !important;
+    transform: none !important;
+}
+
+#numbers {
+    display: flex !important;
+    justify-content: space-around !important;
+    width: calc(100% - 310px) !important;
+    padding: 0 10% !important;
+    box-sizing: border-box !important;
+    left: 0 !important;
+    position: absolute !important;
+    margin-left: 310px !important;
+    align-items: center;
+}
+
+/* RESPONSIVE MOBILE ADJUSTMENTS */
+@media screen and (max-width: 1024px) {
+    #grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        height: auto !important;
+    }
+    
+    #banner {
+        width: 100% !important;
+        height: 300px !important;
+        position: relative !important;
+        border-right: none !important;
+        border-bottom: 5px solid rgb(75, 75, 75) !important;
+    }
+    
+    body.dark-mode #banner {
+        width: 100% !important;
+        height: 300px !important;
+        border-right: none !important;
+        border-bottom: 5px solid rgb(75, 75, 75) !important;
+    }
+    
+    #banner video, body.dark-mode #banner video {
+        width: 100% !important; 
+    }
+    
+    #grid {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        margin-left: 0 !important;
+        width: 100% !important;
+        grid-template-columns: 1fr !important;
+    }
+    
+    #headings, #numbers {
+    display: flex !important;
+    justify-content: space-around !important;
+    width: calc(100% - 310px) !important;
+    padding: 0 10% !important;
+    box-sizing: border-box !important;
+    left: 0 !important;
+    position: absolute !important;
+    margin-left: 310px !important;
+    align-items: center;
+}
+    
+    #headings p, #numbers p {
+    width: 150px !important;
+    text-align: center !important;
+    margin: 0 !important;
+    transform: none !important;
+}
+    
+    #headings p {
+    width: 150px !important;
+    text-align: center !important;
+    margin: 0 !important;
+    transform: none !important;
+}
+    
+    #numbers p {
+    width: 150px !important;
+    text-align: center !important;
+    margin: 0 !important;
+    transform: none !important;
+}
+
+    footer {
+        position: relative !important;
+        bottom: 0 !important;
+    }
+    
+    /* Splash adjustments */
+    #at {
+position: static;
+font-size: clamp(40px, 6vw, 100px);
+margin: 0;
+font-family: "Tilt Neon", sans-serif;
+}
+    
+    #overlay img {
+        width: 90vw !important;
+        height: auto !important;
+    }
+    
+    #footer {
+        left: 0 !important;
+        text-align: center;
+    }
+}
+
+.back-btn { position: absolute; left: 30px; top: 50%; transform: translateY(-50%); background: transparent; color: white; border: 2px solid white; border-radius: 8px; padding: 10px 20px; cursor: pointer; font-size: 20px; font-family: "Oswald", sans-serif; transition: 0.3s; z-index: 100; }
+body.dark-mode .back-btn { border-color: black; color: black; }
+.back-btn:hover { background: white; color: black; }
+body.dark-mode .back-btn:hover { background: black; color: white; }
+    
+@media screen and (max-width: 768px) {
+    #headings, #numbers {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+}
+
+
+/* ---------------- FINAL BUG FIX OVERRIDES ---------------- */
+
+/* 1. Perfect Alignment for Headings and Numbers */
+#headings, #numbers {
+    position: absolute !important;
+    left: 310px !important; /* To clear banner */
+    right: 0 !important;
+    width: auto !important;
+    display: flex !important;
+    justify-content: space-evenly !important; /* Slices into 3 perfect equal columns */
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#headings p, #numbers p {
+    flex: 1 !important;
+    text-align: center !important;
+    margin: 0 !important;
+    transform: none !important;
+    width: 100% !important; /* Use flex bounds */
+}
+
+/* 2. Overlay Visibility properly driven by Opacity, skipping faulty height logic causing bottom drops */
+[id^=pis] .overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    opacity: 0 !important;
+    transition: opacity 0.5s ease !important;
+}
+
+[id^=pis]:hover .overlay {
+    opacity: 1 !important;
+}
+
+/* 3. Unblock Back Buttons (guarantees top-layer clicks rendering fine without blur intercepts) */
+.back-btn {
+    pointer-events: auto !important;
+    z-index: 9999 !important; /* Force to top */
+}
+
+/* Unblock overlay */
+#overlay {
+    pointer-events: none !important; 
+}
+
+/* 4. Completely Universal Centering for Splash Transition Images */
+#overlay img {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+#headings { top: 350px !important; }
+#numbers { top: 200px !important; }
+@media screen and (max-width: 768px) { #headings { top: auto !important; position: relative !important; } #numbers { top: auto !important; position: relative !important; } }
+
+#headings {
+    font-size: 35px !important;
+    font-family: "Oswald", sans-serif !important;
+}
+#numbers {
+    font-size: 80px !important;
+    font-family: "Oswald", sans-serif !important;
+}
+@media screen and (max-width: 768px) {
+    #headings p { font-size: 20px !important; }
+    #numbers p { font-size: 40px !important; }
+}
+
+
+/* UNIVERSAL SPLASH SCREEN LOGO DIMENSIONS */
+/* This exact rule guarantees that all splash logos load seamlessly across profile and hero transition contexts without snapping width bounds */
+#overlay img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 600px !important;
+    max-height: 350px !important;
+    object-fit: contain !important;
+}
+
+
+/* UNIVERSAL EXACT FULL-SCREEN OVERLAY OVERRIDE (Fixes 100vw scrollbar layout-shifting horizontal snaps) */
+#overlay {
+    width: 100% !important;
+    height: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: fixed !important;
+    box-sizing: border-box !important;
+}
+
