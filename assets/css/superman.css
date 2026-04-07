@@ -507,6 +507,9 @@ body.dark-mode .back-btn:hover { background: transparent; color: black; border-b
 #numbers  { top: 200px !important;  font-size: 80px !important;  font-family: "Oswald", sans-serif !important; }
 
 /* ============================================================
+
+
+/* ============================================================
    INSTAGRAM AESTHETIC MASTERPIECE - MOBILE RESPONSIVENESS
    For screens <= 768px, we pivot from the tall banner into
    an Instagram-profile style. Avatar on left, Stats on right,
@@ -528,9 +531,12 @@ body.dark-mode .back-btn:hover { background: transparent; color: black; border-b
         box-sizing: border-box !important;
         border-bottom: 1px solid #333 !important;
         justify-content: center !important;
+        position: relative !important;
+        z-index: 1000 !important;
+        background-color: #121212 !important;
     }
 
-    body.dark-mode #header { border-bottom: 1px solid #ccc !important; }
+    body.dark-mode #header { border-bottom: 1px solid #ccc !important; background-color: #ffffff !important; }
 
     #at {
         font-size: clamp(18px, 6vw, 28px) !important;
@@ -539,9 +545,11 @@ body.dark-mode .back-btn:hover { background: transparent; color: black; border-b
         padding: 0 !important;
         margin: 0 !important;
         font-weight: bold !important;
+        color: white !important;
     }
+    body.dark-mode #at { color: black !important; }
 
-    /* Dark mode toggle fixes */
+    /* Dark mode toggle fixes - prevent jumping */
     #darkmode {
         position: fixed !important;
         top: 15px !important;
@@ -550,27 +558,32 @@ body.dark-mode .back-btn:hover { background: transparent; color: black; border-b
         padding: 5px !important;
         background: transparent !important;
         box-shadow: none !important;
+        transform: none !important; /* Forces it not to jump */
     }
+    #darkmode:hover { transform: none !important; }
+    #darkmode.dark-mode:hover { transform: none !important; }
+
     #darkmode svg { width: 30px !important; height: 30px !important; fill: white !important; }
     body.dark-mode #darkmode svg { fill: black !important; }
 
     /* Hide back button on mobile per instructions */
     #back-btn, .back-btn { display: none !important; }
 
-    /* Container: relative for absolute header contents, add top padding for grid */
+    /* Container */
     #container {
         display: block !important;
         position: relative !important;
         width: 100% !important;
         height: auto !important;
-        padding-top: 120px !important; /* Space for the avatar/stats block */
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
-    /* Banner acts as Avatar */
+    /* Banner acts as Avatar - Explicit dimensions and shape */
     #banner, body.dark-mode #banner {
         position: absolute !important;
-        top: 20px !important;
-        left: 20px !important;
+        top: 15px !important;
+        left: 15px !important;
         width: 85px !important;
         height: 85px !important;
         border-radius: 50% !important;
@@ -578,6 +591,10 @@ body.dark-mode .back-btn:hover { background: transparent; color: black; border-b
         overflow: hidden !important;
         display: block !important;
         background: black !important;
+        z-index: 500 !important;
+        
+        /* Clear mask override to force rounding of video overlay on iOS */
+        -webkit-mask-image: -webkit-radial-gradient(white, black);
     }
 
     #banner video, body.dark-mode #banner video {
@@ -586,23 +603,26 @@ body.dark-mode .back-btn:hover { background: transparent; color: black; border-b
         object-fit: cover !important;
         float: none !important;
         display: block !important;
+        border-radius: 50% !important;
     }
 
     /* Stats container: aligned to the right of avatar */
     #numbers, #headings {
         position: absolute !important;
-        left: 115px !important;
-        width: calc(100% - 135px) !important;
+        left: 110px !important;
+        width: calc(100% - 125px) !important;
         margin: 0 !important;
         padding: 0 !important;
         display: flex !important;
-        justify-content: space-between !important;
+        justify-content: space-evenly !important;
         align-items: center !important;
+        z-index: 500 !important;
+        background: transparent !important;
     }
 
-    /* Fine-tune top values */
-    #numbers { top: 35px !important; }
-    #headings { top: 75px !important; }
+    /* Fine-tune top values relative to container */
+    #numbers { top: 30px !important; }
+    #headings { top: 70px !important; }
 
     #numbers p, #headings p {
         flex: 1 !important;
@@ -610,32 +630,39 @@ body.dark-mode .back-btn:hover { background: transparent; color: black; border-b
         margin: 0 !important;
         transform: none !important;
         font-family: inherit !important;
+        position: static !important;
     }
 
-    #numbers p { font-size: 22px !important; font-weight: bold !important; font-family: "Oswald", sans-serif !important;}
-    #headings p { font-size: 11px !important; letter-spacing: 0px !important; }
+    #numbers p { font-size: 22px !important; font-weight: bold !important; font-family: "Oswald", sans-serif !important; color: white !important;}
+    body.dark-mode #numbers p { color: black !important; }
+    
+    #headings p { font-size: 11px !important; letter-spacing: 0px !important; color: white !important; }
+    body.dark-mode #headings p { color: black !important; }
 
     /* Instagram 3-grid perfectly mapped */
     #grid {
-        position: relative !important;
-        top: auto !important;
+        position: absolute !important;
+        top: 130px !important; /* Pushed perfectly below the banner/stats area */
         left: 0 !important;
-        margin-left: 0 !important;
+        margin: 0 !important;
         width: 100vw !important;
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
         grid-gap: 2px !important;
-        margin-top: 20px !important;
         box-sizing: border-box !important;
+        z-index: 100 !important;
     }
 
     /* Perfect squares matching viewport ratio */
     [id^=pis] {
         height: 33vw !important;
+        min-height: 100px !important; /* Fallback safe min height */
         border: none !important;
         padding: 0 !important;
         margin: 0 !important;
         background: #121212 !important;
+        position: relative !important;
+        top: auto !important; /* Override desktop absolute bounds inside pis */
     }
 
     body.dark-mode [id^=pis] { background: white !important; }
@@ -643,13 +670,14 @@ body.dark-mode .back-btn:hover { background: transparent; color: black; border-b
     /* Darken overlays properly */
     [id^=pis]:hover .overlay { background: rgba(0,0,0,0.4) !important; opacity: 1 !important; }
 
-    #views { font-size: 20px !important; font-weight: bold !important; }
+    #views { position: static !important; font-size: 20px !important; font-weight: bold !important; color: white !important; }
 
     /* Video popup centered naturally */
     .red-overlay { width: 95vw !important; height: 70vh !important; }
 
     footer {
-        position: relative !important;
+        position: absolute !important; /* Position below absolute grid */
+        top: 1500px !important; /* Arbitrary high drop safely past images */
         bottom: auto !important;
         width: 100% !important;
         margin-top: 40px !important;
@@ -658,5 +686,15 @@ body.dark-mode .back-btn:hover { background: transparent; color: black; border-b
     body.dark-mode footer { border-top: 1px solid #ccc !important; }
     #footer { left: 0 !important; text-align: center !important; }
 
-    #overlay img { max-width: 85vw !important; max-height: 180px !important; }
+    #overlay img { max-width: 60vw !important; max-height: 120px !important; }
+}
+@media screen and (max-width: 768px) {
+    footer {
+        position: absolute !important;
+        top: calc(150px + 70vw) !important; /* Maps perfectly under the 2-row square grid (33vw per row) */
+        bottom: auto !important;
+        width: 100% !important;
+        margin-top: 40px !important;
+        border-top: 1px solid #333 !important;
+    }
 }

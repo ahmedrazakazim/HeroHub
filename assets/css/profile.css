@@ -750,3 +750,18 @@ top: 20px;
     position: fixed !important;
     box-sizing: border-box !important;
 }
+/* Reduced explicitly from 100px to better reflect layout harmony without blowing up */
+@media screen and (max-width: 768px) {
+    img[src="assets/images/betmenpfp.jpg"],
+    img[src="assets/images/supermanpfp.jpg"],
+    img[src="assets/images/dead1.jpg"],
+    img[src="assets/images/spidermanpfp2.jpg"],
+    img[src="assets/images/ironmanpfp.jpg"] {
+        position: relative !important;
+        margin: 0 auto 12px !important;
+        margin-top: 0 !important;
+        margin-left: auto !important;
+        width: 70px !important;
+        height: 70px !important; /* Reduced to fix super-enlargement feedback */
+    }
+}
