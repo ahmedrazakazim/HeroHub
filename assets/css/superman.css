@@ -474,7 +474,6 @@ font-family: "Tilt Neon", sans-serif;
     margin-left: 310px !important;
     align-items: center;
 }
-
 /* RESPONSIVE MOBILE ADJUSTMENTS */
 @media screen and (max-width: 1024px) {
     #grid {
@@ -482,134 +481,30 @@ font-family: "Tilt Neon", sans-serif;
     }
 }
 
-@media screen and (max-width: 768px) {
-    body {
-        height: auto !important;
-    }
-    
-    #banner {
-        width: 100% !important;
-        height: 300px !important;
-        position: relative !important;
-        border-right: none !important;
-        border-bottom: 5px solid rgb(75, 75, 75) !important;
-    }
-    
-    body.dark-mode #banner {
-        width: 100% !important;
-        height: 300px !important;
-        border-right: none !important;
-        border-bottom: 5px solid rgb(75, 75, 75) !important;
-    }
-    
-    #banner video, body.dark-mode #banner video {
-        width: 100% !important; 
-    }
-    
-    #grid {
-        position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
-        margin-left: 0 !important;
-        width: 100% !important;
-        grid-template-columns: 1fr !important;
-    }
-    
-    #headings, #numbers {
-    display: flex !important;
-    justify-content: space-around !important;
-    width: calc(100% - 310px) !important;
-    padding: 0 10% !important;
-    box-sizing: border-box !important;
-    left: 0 !important;
-    position: absolute !important;
-    margin-left: 310px !important;
-    align-items: center;
-}
-    
-    #headings p, #numbers p {
-    width: 150px !important;
-    text-align: center !important;
-    margin: 0 !important;
-    transform: none !important;
-}
-    
-    #headings p {
-    width: 150px !important;
-    text-align: center !important;
-    margin: 0 !important;
-    transform: none !important;
-}
-    
-    #numbers p {
-    width: 150px !important;
-    text-align: center !important;
-    margin: 0 !important;
-    transform: none !important;
-}
-
-    footer {
-        position: relative !important;
-        bottom: 0 !important;
-    }
-    
-    /* Splash adjustments */
-    #at {
-position: static;
-font-size: clamp(40px, 6vw, 100px);
-margin: 0;
-font-family: "Tilt Neon", sans-serif;
-}
-    
-    #overlay img {
-        width: 90vw !important;
-        height: auto !important;
-    }
-    
-    #footer {
-        left: 0 !important;
-        text-align: center;
-    }
-}
-
 .back-btn { position: absolute; left: 30px; top: 50%; transform: translateY(-50%); background: transparent; color: white; border: 2px solid white; border-radius: 8px; padding: 10px 20px; cursor: pointer; font-size: 20px; font-family: "Oswald", sans-serif; transition: 0.3s; z-index: 100; }
 body.dark-mode .back-btn { border-color: black; color: black; }
 .back-btn:hover { background: white; color: black; }
 body.dark-mode .back-btn:hover { background: black; color: white; }
-    
-@media screen and (max-width: 768px) {
-    #headings, #numbers {
-        margin-left: 0 !important;
-        width: 100% !important;
-        padding: 0 !important;
-    }
-}
 
-
-/* ---------------- FINAL BUG FIX OVERRIDES ---------------- */
-
-/* 1. Perfect Alignment for Headings and Numbers */
+/* Desktop overrides */
 #headings, #numbers {
     position: absolute !important;
-    left: 310px !important; /* To clear banner */
+    left: 310px !important;
     right: 0 !important;
     width: auto !important;
     display: flex !important;
-    justify-content: space-evenly !important; /* Slices into 3 perfect equal columns */
+    justify-content: space-evenly !important;
     align-items: center !important;
     margin: 0 !important;
     padding: 0 !important;
 }
-
 #headings p, #numbers p {
     flex: 1 !important;
     text-align: center !important;
     margin: 0 !important;
     transform: none !important;
-    width: 100% !important; /* Use flex bounds */
+    width: 100% !important;
 }
-
-/* 2. Overlay Visibility properly driven by Opacity, skipping faulty height logic causing bottom drops */
 [id^=pis] .overlay {
     position: absolute !important;
     top: 0 !important;
@@ -622,60 +517,10 @@ body.dark-mode .back-btn:hover { background: black; color: white; }
     opacity: 0 !important;
     transition: opacity 0.5s ease !important;
 }
-
-[id^=pis]:hover .overlay {
-    opacity: 1 !important;
-}
-
-/* 3. Unblock Back Buttons (guarantees top-layer clicks rendering fine without blur intercepts) */
-.back-btn {
-    pointer-events: auto !important;
-    z-index: 9999 !important; /* Force to top */
-}
-
-/* Unblock overlay */
+[id^=pis]:hover .overlay { opacity: 1 !important; }
+.back-btn { pointer-events: auto !important; z-index: 9999 !important; }
 #overlay {
-    pointer-events: none !important; 
-}
-
-/* 4. Completely Universal Centering for Splash Transition Images */
-#overlay img {
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-}
-
-#headings { top: 350px !important; }
-#numbers { top: 200px !important; }
-@media screen and (max-width: 768px) { #headings { top: auto !important; position: relative !important; } #numbers { top: auto !important; position: relative !important; } }
-
-#headings {
-    font-size: 35px !important;
-    font-family: "Oswald", sans-serif !important;
-}
-#numbers {
-    font-size: 80px !important;
-    font-family: "Oswald", sans-serif !important;
-}
-@media screen and (max-width: 768px) {
-    #headings p { font-size: 20px !important; }
-    #numbers p { font-size: 40px !important; }
-}
-
-
-/* UNIVERSAL SPLASH SCREEN LOGO DIMENSIONS */
-/* This exact rule guarantees that all splash logos load seamlessly across profile and hero transition contexts without snapping width bounds */
-#overlay img {
-    width: auto !important;
-    height: auto !important;
-    max-width: 600px !important;
-    max-height: 350px !important;
-    object-fit: contain !important;
-}
-
-
-/* UNIVERSAL EXACT FULL-SCREEN OVERLAY OVERRIDE (Fixes 100vw scrollbar layout-shifting horizontal snaps) */
-#overlay {
+    pointer-events: none !important;
     width: 100% !important;
     height: 100% !important;
     left: 0 !important;
@@ -685,4 +530,137 @@ body.dark-mode .back-btn:hover { background: black; color: white; }
     position: fixed !important;
     box-sizing: border-box !important;
 }
+#overlay img {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 600px !important;
+    max-height: 350px !important;
+    object-fit: contain !important;
+}
+#headings { top: 350px !important; font-size: 35px !important; font-family: "Oswald", sans-serif !important; }
+#numbers  { top: 200px !important;  font-size: 80px !important;  font-family: "Oswald", sans-serif !important; }
 
+/* ============================================================
+   COMPLETE MOBILE LAYOUT FIX - phones <= 768px (Samsung S23 etc)
+   Desktop uses absolute offsets (left:310px, top:771px) that
+   break on narrow screens. Rules below stack everything vertically.
+   ============================================================ */
+@media screen and (max-width: 768px) {
+
+    body {
+        height: auto !important;
+        min-height: 100vh !important;
+        display: block !important;
+        overflow-x: hidden !important;
+    }
+
+    #header {
+        height: auto !important;
+        min-height: 60px !important;
+        padding: 55px 10px 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    #at {
+        font-size: clamp(14px, 4.5vw, 24px) !important;
+        text-align: center !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    #darkmode {
+        position: fixed !important;
+        top: 10px !important;
+        right: 10px !important;
+        z-index: 10000 !important;
+        padding: 5px !important;
+    }
+    #darkmode svg { width: 28px !important; height: 28px !important; }
+
+    #back-btn {
+        position: fixed !important;
+        top: 10px !important;
+        left: 10px !important;
+        font-size: 13px !important;
+        padding: 6px 12px !important;
+        z-index: 10000 !important;
+    }
+
+    #container {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    #banner, body.dark-mode #banner {
+        position: relative !important;
+        width: 100% !important;
+        height: 200px !important;
+        border-right: none !important;
+        border-bottom: 4px solid rgb(75, 75, 75) !important;
+        overflow: hidden !important;
+        display: block !important;
+    }
+
+    #banner video, body.dark-mode #banner video {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        float: none !important;
+        display: block !important;
+    }
+
+    #numbers, #headings {
+        position: relative !important;
+        top: auto !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 8px 4px !important;
+        display: flex !important;
+        justify-content: space-evenly !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+
+    #numbers p, #headings p {
+        flex: 1 !important;
+        text-align: center !important;
+        margin: 0 !important;
+        transform: none !important;
+        padding: 0 2px !important;
+    }
+    #numbers p { font-size: 28px !important; }
+    #headings p { font-size: 11px !important; letter-spacing: 0.3px !important; }
+
+    #grid {
+        position: relative !important;
+        top: auto !important;
+        left: 0 !important;
+        margin-left: 0 !important;
+        width: 100% !important;
+        grid-template-columns: 1fr !important;
+        margin-top: 0 !important;
+    }
+
+    [id^=pis] { height: 240px !important; }
+    #views { font-size: 40px !important; }
+
+    .red-overlay { width: 98vw !important; height: 88vh !important; }
+
+    footer {
+        position: relative !important;
+        bottom: auto !important;
+        width: 100% !important;
+    }
+    #footer { left: 0 !important; text-align: center !important; }
+
+    #overlay img { max-width: 85vw !important; max-height: 180px !important; }
+}
