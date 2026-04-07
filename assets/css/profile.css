@@ -601,14 +601,12 @@ top: 20px;
         overflow-x: hidden;
     }
 
-    /* Header: accommodate dark mode button */
     #header {
         height: auto !important;
         padding: 15px 0 !important;
         flex-wrap: wrap;
     }
 
-    /* HeroHub title: center on mobile */
     #heading img {
         position: relative !important;
         left: auto !important;
@@ -628,7 +626,6 @@ top: 20px;
         filter: invert(0);
     }
 
-    /* Dark mode button: fixed top-right so it doesn't crowd title */
     #darkmode {
         position: fixed !important;
         top: 10px !important;
@@ -638,7 +635,6 @@ top: 20px;
     }
     #darkmode svg { width: 28px !important; height: 28px !important; }
 
-    /* Container: flex column, smaller gap */
     #container {
         gap: 20px !important;
         margin-top: 20px !important;
@@ -646,7 +642,6 @@ top: 20px;
         box-sizing: border-box;
     }
 
-    /* Profile cards: auto height, flex column */
     [id^="profile"] {
         height: auto !important;
         min-height: unset !important;
@@ -657,7 +652,6 @@ top: 20px;
         overflow: visible !important;
     }
 
-    /* Profile images: smaller on mobile */
     img[src="assets/images/betmenpfp.jpg"],
     img[src="assets/images/supermanpfp.jpg"],
     img[src="assets/images/dead1.jpg"],
@@ -671,7 +665,6 @@ top: 20px;
         height: 100px !important;
     }
 
-    /* Hero name and handle */
     #inf {
         position: static !important;
         font-size: 28px !important;
@@ -689,46 +682,47 @@ top: 20px;
         margin: 0 0 8px !important;
     }
 
-    /* Bio text: always visible on touch (no hover) */
+    /* SCROLL ANIMATION SUPPORT FOR MOBILE */
+    /* By default, bio hides on mobile. When user scrolls to it, .in-view class applies */
     #about, #me {
         position: static !important;
         left: auto !important;
         bottom: auto !important;
-        opacity: 1 !important;
         text-align: center !important;
         margin: 4px 10px !important;
         max-width: 100% !important;
-        transform: none !important;
+        opacity: 0 !important;
+        transform: translateY(50px) !important;
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out !important;
     }
     #about { font-size: 18px !important; }
-    #me {
-        font-size: 13px !important;
-        line-height: 1.5 !important;
+    #me { font-size: 13px !important; line-height: 1.5 !important; }
+
+    /* When observer triggers */
+    [id^="profile"].in-view #about,
+    [id^="profile"].in-view #me {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
     }
 
-    /* Disable the blur-on-siblings hover effect on touch */
     #container:hover [id^="profile"]:not(:hover) {
         filter: none !important;
     }
 
-    /* Scale transform on profile hover: too jumpy on touch */
     #profile1:hover, #profile2:hover, #profile3:hover,
     #profile4:hover, #profile5:hover {
         transform: none !important;
     }
 
-    /* Search bar: full width */
     #search-input {
         width: 95% !important;
         max-width: unset !important;
         font-size: 14px !important;
     }
 
-    /* Footer */
     footer { padding-bottom: 30px; }
     .footing { font-size: 13px !important; }
 
-    /* Overlay logo: smaller on mobile */
     #overlay img {
         max-width: 85vw !important;
         max-height: 200px !important;

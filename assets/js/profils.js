@@ -205,3 +205,25 @@ window.addEventListener("pageshow", function(event) {
     
     document.body.classList.remove('locked');
 });
+
+// Intersection Observer for mobile scrolling animation reveals
+document.addEventListener("DOMContentLoaded", function() {
+    const profiles = document.querySelectorAll('[id^="profile"]');
+    if (!profiles.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            } else {
+                entry.target.classList.remove('in-view');
+            }
+        });
+    }, {
+        threshold: 0.3
+    });
+
+    profiles.forEach(profile => {
+        observer.observe(profile);
+    });
+});
